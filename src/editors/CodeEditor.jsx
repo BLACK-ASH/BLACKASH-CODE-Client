@@ -36,7 +36,8 @@ const CodeEditor = () => {
             <div className='flex' >
                 <Dropmenu items={Object.keys(infoLanguage)} value={language} changeValue={setLanguage} />
                 <Dropmenu items={['xcode', 'solarized_light', 'dracula', 'monokai']} value={theme} changeValue={setTheme} />
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={runCode}>Run</button>
+                <button className='btn btn-neutral m-1' onClick={runCode}>Run</button>
+                
             </div>
             <InputEditor language={language} theme={theme} fontSize={fontSize} onChange={setInputCode} />
             <Output output={outputCode} displayOutput={displayOutput} setDisplayOutput={setDisplayOutput} />
