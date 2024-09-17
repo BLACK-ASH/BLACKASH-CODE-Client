@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 const ThemeSelector = () => {
     // Get the user's theme from localStorage or fallback to 'light' theme
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+const themes = ["cupcake", "dark","cyberpunk","retro"]
 
     useEffect(() => {
         // Apply the theme to the HTML tag
@@ -17,31 +18,18 @@ const ThemeSelector = () => {
         setTheme(newTheme);
     };
     return (
-        <div onClick={(e) => handleThemeChange(e.target.value)} className="join join-horizontal">
-            <input
-                type="radio"
-                name="theme-buttons"
-                className="btn theme-controller join-item"
-                aria-label="Light"
-                value="light" />
-            <input
-                type="radio"
-                name="theme-buttons"
-                className="btn theme-controller join-item"
-                aria-label="Cyberpunk"
-                value="cyberpunk" />
-            <input
-                type="radio"
-                name="theme-buttons"
-                className="btn theme-controller join-item"
-                aria-label="Dark"
-                value="dark" />
-            <input
-                type="radio"
-                name="theme-buttons"
-                className="btn theme-controller join-item"
-                aria-label="Retro"
-                value="retro" />
+        <div onClick={(e) => handleThemeChange(e.target.value)} className="grid grid-cols-2 gap-2 ">
+            {themes.map((item, index) => (
+                <input
+                    key={index}
+                    type="radio"
+                    id={item}
+                    checked={theme === item}
+                    name="theme-buttons"
+                    className="btn theme-controller join-item"
+                    aria-label={item}
+                    value={item} />
+            ))}
         </div>
     )
 }

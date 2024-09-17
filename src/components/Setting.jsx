@@ -28,37 +28,43 @@ const Setting = () => {
     }
 
     return (
-        <div className='setting bg-base-200 m-2 h-screen ' >
+        <div className='setting bg-base-200 m-2 h-full py-2 ' >
             <h2 className='text-3xl text-primary  m-2 p-2 '>Setting</h2>
-            <div className='m-3 p-2 bg-secondary rounded-box ' >
-                <p className='text-2xl text-base-200'>Website Theme</p>
+            <div className='m-3 p-2 bg-secondary rounded-box space-y-2 ' >
+                <p className='text-2xl text-base-200  p-2 rounded-box'>Website Theme</p>
                 <ThemeSelector />
             </div>
             <div className='m-3 p-2 bg-secondary rounded-box ' >
-                <p className='text-2xl text-base-200'> Editor Theme & Font Size</p>
-                <div className='flex gap-8' >
-                    <div onClick={(e) => changeTheme(e.target.value)} className="join join-horizontal">
-                        {editorTheme.map((item, index) => (
-                            <input
-                                type="radio"
-                                name="theme-buttons"
-                                className="btn theme-controller join-item"
-                                aria-label={item}
-                                value={item}
-                                key={index} />
-                        ))}
-                    </div>
-                    <div className="flex">
-                        <button onClick={textIncrease} className='btn btn-accent ml-2' >Increase</button>
-                        <button onClick={textDecrease} className='btn btn-accent ml-2' >Decrease</button>
-                    </div>
+                <p className='text-2xl text-base-200 '> Editor Theme</p>
+
+                <div onClick={(e) => changeTheme(e.target.value)} className="grid grid-cols-2 gap-2  ">
+                    {editorTheme.map((item, index) => (
+                        <input
+                            key={index}
+                            type="radio"
+                            id={item}
+                            checked={theme === item}
+                            name="theme-buttons"
+                            className="btn theme-controller join-item"
+                            aria-label={item}
+                            value={item} />
+                    ))}
+
                 </div>
+                <p className='text-2xl text-base-200 '>Font Size</p>
+                <div className="grid grid-cols-2 gap-2 ">
+                    <button onClick={textIncrease} className='btn btn-accent ml-2' >Increase</button>
+                    <button onClick={textDecrease} className='btn btn-accent ml-2' >Decrease</button>
+                </div>
+
                 <p className='text-2xl text-base-200' >Preview</p>
-                <div className='bg-base-100 rounded-box h-[40vh] p-2' >
-                    <InputEditor theme={theme} fontSize={fontSize} />
+                <div className='bg-base-100 rounded-box h-[40vh] py-2' >
+                    <InputEditor theme={theme} defaultValue="Hello World" fontSize={fontSize} />
                 </div>
+
             </div>
         </div>
+
     )
 }
 

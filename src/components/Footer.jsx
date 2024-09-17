@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-base-300 text-primary-content max-w-screen py-4">
+    <footer className="footer footer-center bg-base-300 text-base-content max-w-screen py-4">
       <aside>
         <svg width="80px" height="80px" viewBox="0 0 1024.00 1024.00" className="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" strokeWidth="1.024" transform="matrix(1, 0, 0, -1, 0, 0)rotate(0)">
 
