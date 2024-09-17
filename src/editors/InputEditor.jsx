@@ -4,7 +4,7 @@ import AceEditor from "react-ace";
 // Importing languages
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/mode-c_cpp";
+import "ace-builds/src-noconflict/mode-c_cpp"
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-typescript"
 import "ace-builds/src-noconflict/mode-html";
@@ -32,11 +32,11 @@ import 'ace-builds/src-noconflict/snippets/typescript';
 import 'ace-builds/src-noconflict/snippets/html';
 import 'ace-builds/src-noconflict/snippets/css';
 
-const InputEditor = ({ language, theme, fontSize, onChange }) => {
+const InputEditor = ({ language, theme, defaultValue, fontSize, onChange }) => {
     return (
         <AceEditor
-        className='w-full h-full'
-            style={{ width: '100%' }}
+            className='rounded-box h-[calc(100% - 40px)] box-border mx-auto'
+            style={{ width: '98%', height: '100%' }}
             mode={language}
             theme={theme}
             onChange={onChange}
@@ -51,7 +51,7 @@ const InputEditor = ({ language, theme, fontSize, onChange }) => {
                 wrap: true,
             }}
             fontSize={fontSize}
-            defaultValue="print('Hello World!')"
+            value={defaultValue}
         />
     )
 }

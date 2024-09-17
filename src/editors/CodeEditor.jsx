@@ -1,48 +1,39 @@
-import React, { useState } from 'react'
-import instance from '../axios/instance';
+import React from 'react';
 import InputEditor from './InputEditor';
-import Dropmenu from '../components/Dropmenu';
-import { infoLanguage } from './content';
 import Output from './Output';
-const CodeEditor = () => {
-    const [language, setLanguage] = useState('python');
-    const [theme, setTheme] = useState('xcode');
-    const [fontSize, setfontSize] = useState(14);
-    const [inputCode, setInputCode] = useState("print('Hello World!')")
-    const [outputCode, setOutputCode] = useState('')
-    const [displayOutput, setDisplayOutput] = useState(false)
-    const runCode = () => {
-        instance.post('/execute', {
-            language: language,
-            version: infoLanguage[language],
-            files: [
-                {
-                    content: inputCode
-                },
-            ],
-        }).then((response) => {
-            console.log(response.data)
-            setOutputCode(response.data.run)
-        }).catch((error) => {
-            console.log(error)
-        })
-        .finally(() => {
-            setDisplayOutput(true)
-        })
-    }
 
+const CodeEditor = ({ 
+    inputCode, 
+    setInputCode, 
+    language, 
+    theme, 
+    fontSize, 
+    output, 
+    setDisplayOutput, 
+    displayOutput 
+}) => {
     return (
-        <>
-            <div className='flex' >
-                <Dropmenu items={Object.keys(infoLanguage)} value={language} changeValue={setLanguage} />
-                <Dropmenu items={['xcode', 'solarized_light', 'dracula', 'monokai']} value={theme} changeValue={setTheme} />
-                <button className='btn btn-neutral m-1' onClick={runCode}>Run</button>
-                
+        <div className="flex bg-primary p-2 text-primary min-h-[calc(90vh-41px)]">
+            {/* InputEditor Section - Always visible on large devices */}
+            <div className={`flex-1 transition-all duration-300 ${displayOutput ? 'hidden lg:block' : 'block'}`}>
+                <InputEditor
+                    defaultValue={inputCode}
+                    language={language}
+                    theme={theme}
+                    fontSize={fontSize}
+                    onChange={setInputCode}
+                />
             </div>
-            <InputEditor language={language} theme={theme} fontSize={fontSize} onChange={setInputCode} />
-            <Output output={outputCode} displayOutput={displayOutput} setDisplayOutput={setDisplayOutput} />
-        </>
-    )
-}
+            
+            {/* Output Section - Toggles visibility but InputEditor stays visible on large devices */}
+            <div className={`flex-1  transition-all overflow-auto  duration-300 ${displayOutput ? 'block lg:w-[35%]' : 'hidden lg:w-[35%]'}`}>
+                <Output
+                    output={output}
+                    setDisplayOutput={setDisplayOutput}
+                />
+            </div>
+        </div>
+    );
+};
 
-export default CodeEditor
+export default CodeEditor;
