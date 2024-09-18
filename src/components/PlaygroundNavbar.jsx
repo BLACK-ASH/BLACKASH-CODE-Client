@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdTextDecrease, MdTextIncrease } from "react-icons/md";
 import { FaPlay } from "react-icons/fa";
 import { infoLanguage, defaultLanguage } from '../editors/content';
 const PlaygroundNavbar = ({ changeLanguage, language, runCode }) => {
@@ -7,7 +6,7 @@ const PlaygroundNavbar = ({ changeLanguage, language, runCode }) => {
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
-                <h2 className='text-lg font-bold text-primary-content' >Playground</h2>
+                <h2 className='text-2xl font-bold text-secondary' >Playground</h2>
             </div>
             <div className="navbar-center dropdown">
                 <div tabIndex={0} role="button" className="select items-center select-bordered">{language}</div>
