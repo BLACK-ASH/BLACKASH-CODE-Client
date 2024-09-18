@@ -13,7 +13,7 @@ const CodeEditor = ({
     displayOutput 
 }) => {
     return (
-        <div className="flex bg-primary p-2 text-primary min-h-[calc(90vh-41px)]">
+        <div className="flex bg-neutral-content p-2 text-primary min-h-[calc(90vh-41px)]">
             {/* InputEditor Section - Always visible on large devices */}
             <div className={`flex-1 transition-all duration-300 ${displayOutput ? 'hidden lg:block' : 'block'}`}>
                 <InputEditor

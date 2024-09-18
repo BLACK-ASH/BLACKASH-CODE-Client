@@ -18,7 +18,7 @@ const themes = ["cupcake", "dark","cyberpunk","retro"]
         setTheme(newTheme);
     };
     return (
-        <div onClick={(e) => handleThemeChange(e.target.value)} className="grid grid-cols-2 gap-2 ">
+        <div onClick={(e) => handleThemeChange(e.target.value)} className="grid grid-cols-2 gap-2 md:grid-cols-4 ">
             {themes.map((item, index) => (
                 <input
                     key={index}
@@ -26,7 +26,7 @@ const themes = ["cupcake", "dark","cyberpunk","retro"]
                     id={item}
                     checked={theme === item}
                     name="theme-buttons"
-                    className="btn theme-controller join-item"
+                    className="btn btn-outline theme-controller "
                     aria-label={item}
                     value={item} />
             ))}

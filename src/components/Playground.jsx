@@ -35,30 +35,11 @@ const Playground = () => {
         setDisplayOutput(true);
       });
   };
-
-  // To change theme
-  const changeTheme = (e) => {
-    setTheme(e);
-    localStorage.setItem('Editortheme', e);
-  };
-
   // To change language and update the default value
   const changeLanguage = (e) => {
     setLanguage(e);
     setInputCode(defaultLanguage[e]);
   };
-
-  const textIncrease = () => {
-    if (fontSize < 18) {
-      setfontSize(fontSize + 1);
-    }
-  }
-
-  const textDecrease = () => {
-    if (fontSize > 14) {
-      setfontSize(fontSize - 1);
-    }
-  }
 
   useEffect(() => {
     localStorage.setItem('fontSize', fontSize);
@@ -66,11 +47,9 @@ const Playground = () => {
   return (
     <>
       <PlaygroundNavbar
-        changeTheme={changeTheme}
         changeLanguage={changeLanguage}
-        textIncrease={textIncrease}
-        textDecrease={textDecrease}
         runCode={runCode}
+        language={language}
       />
       <CodeEditor
         inputCode={inputCode}
