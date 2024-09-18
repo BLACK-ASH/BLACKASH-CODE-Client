@@ -2,10 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Typewriter from 'typewriter-effect';
 import { infoLanguage } from "../editors/content";
-import PlaygroundImg from "../images/playground.png";
-import WebBuilderImg from "../images/webbuilder.jpg";
-import CodingProblem from "../images/problem.png";
-import LearnToCode from "../images/learn.jpg";
+import playgroundImg from "../images/playground.png";
+import webBuilderImg from "../images/webbuilder.jpg";
+import codingProblem from "../images/problem.png";
+import learnToCode from "../images/learn.jpg";
 
 const Home = () => {
 
@@ -44,7 +44,7 @@ const Home = () => {
           </div>
           <div className="divider lg:divider-horizontal"></div>
           <div className="w-full lg:w-1/2">
-            <img width={400} height={400} className="w-full rounded-lg " src={PlaygroundImg} alt="Playground" />
+            <img width={400} height={400} className="w-full rounded-lg " src={playgroundImg} alt="Playground" />
           </div>
         </div>
       </section>
@@ -57,7 +57,7 @@ const Home = () => {
           </div>
           <div className="divider lg:divider-horizontal"></div>
           <div className="w-full lg:w-1/2">
-            <img width={400} height={400} className="w-full rounded-lg " src={WebBuilderImg} alt="Web Builder" />
+            <img width={400} height={400} className="w-full rounded-lg " src={webBuilderImg} alt="Web Builder" />
           </div>
         </div>
       </section>
@@ -70,7 +70,7 @@ const Home = () => {
           </div>
           <div className="divider lg:divider-horizontal"></div>
           <div className="w-full lg:w-1/2">
-            <img width={400} height={400} className="w-full rounded-lg " src={CodingProblem} alt="Coding Problems" />
+            <img width={400} height={400} className="w-full rounded-lg " src={codingProblem} alt="Coding Problems" />
           </div>
         </div>
       </section>
@@ -83,7 +83,7 @@ const Home = () => {
           </div>
           <div className="divider lg:divider-horizontal"></div>
           <div className="w-full lg:w-1/2">
-            <img width={400} height={400} className="w-full rounded-lg " src={LearnToCode} alt="Learn To Code" />
+            <img width={400} height={400} className="w-full rounded-lg " src={learnToCode} alt="Learn To Code" />
           </div>
         </div>
       </section>
