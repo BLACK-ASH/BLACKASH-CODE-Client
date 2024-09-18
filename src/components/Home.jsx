@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Typewriter from 'typewriter-effect';
 import { infoLanguage } from "../editors/content";
-import playgroundImg from "../images/playground.png";
+import playgroundImg from "../images/Playground.png";
 import webBuilderImg from "../images/webbuilder.jpg";
 import codingProblem from "../images/problem.png";
 import learnToCode from "../images/learn.jpg";
