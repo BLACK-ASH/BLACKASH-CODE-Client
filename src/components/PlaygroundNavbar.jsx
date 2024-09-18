@@ -9,13 +9,13 @@ const PlaygroundNavbar = ({ changeLanguage, language, runCode }) => {
             <div className="navbar-start">
                 <h2 className='text-lg font-bold text-primary-content' >Playground</h2>
             </div>
-            <div className="navbar-center">
-                <select onClick={(e) => changeLanguage(e.target.value)} className="select font-mono font-bold w-full max-w-xs">
-                    <option >{language}</option>
+            <div className="navbar-center dropdown">
+                <div tabIndex={0} role="button" className="select items-center select-bordered">{language}</div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[10] w-52 p-2 shadow">
                     {Object.keys(infoLanguage).map((item, index) => (
-                        <option key={index} value={item}>{item}</option>
+                        <li key={index}><button onClick={() => changeLanguage(item)}>{item}</button></li>
                     ))}
-                </select>
+                </ul>
             </div>
             <div className="navbar-end">
                 <button className='btn btn-ghost ' onClick={runCode}>
