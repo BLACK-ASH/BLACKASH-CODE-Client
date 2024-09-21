@@ -54,7 +54,8 @@ const Playground = () => {
       <CodeEditor
         inputCode={inputCode}
         setInputCode={setInputCode}
-        language={language} theme={theme}
+        language={language}
+        theme={theme}
         fontSize={fontSize}
         output={outputCode}
         setDisplayOutput={setDisplayOutput}

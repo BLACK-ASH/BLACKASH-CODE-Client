@@ -31,8 +31,12 @@ const Home = () => {
           />
         </div>
         <div className='flex justify-center items-center mt-4 gap-3' >
-          <button className='btn min-w-40 btn-primary font-bold text-primary-content my-3' ><NavLink to="/playground">Playground</NavLink></button>
-          <button className='btn min-w-40 btn-neutral btn-outline  font-bold text-primary-content my-3'><NavLink to="/login">Login</NavLink></button>
+          <button className='btn min-w-40 btn-primary font-bold text-primary-content my-3' >
+            <NavLink to="/playground">Playground</NavLink>
+          </button>
+          <button className='btn min-w-40 btn-neutral btn-outline  font-bold text-primary-content my-3'>
+            <NavLink to="/login">Login</NavLink>
+          </button>
         </div>
       </header>
       <section className=' mb-12 ' >

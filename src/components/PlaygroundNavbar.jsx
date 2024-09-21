@@ -1,8 +1,7 @@
 import React from 'react'
 import { FaPlay } from "react-icons/fa";
-import { infoLanguage, defaultLanguage } from '../editors/content';
+import { infoLanguage } from '../editors/content';
 const PlaygroundNavbar = ({ changeLanguage, language, runCode }) => {
-    const editorTheme = ['xcode', 'solarized_light', 'dracula', 'monokai']
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
