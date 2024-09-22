@@ -9,7 +9,7 @@ const PlaygroundNavbar = ({ changeLanguage, language, runCode }) => {
             </div>
             <div className="navbar-center dropdown">
                 <div tabIndex={0} role="button" className="select items-center select-bordered">{language}</div>
-                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[10] w-52 p-2 shadow">
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[20] w-52 p-2 shadow">
                     {Object.keys(infoLanguage).map((item, index) => (
                         <li key={index}><button onClick={() => changeLanguage(item)}>{item}</button></li>
                     ))}

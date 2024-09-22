@@ -18,12 +18,14 @@ const Setting = () => {
     const textIncrease = () => {
         if (fontSize < 18) {
             setfontSize(fontSize + 1);
+            localStorage.setItem('fontSize', fontSize + 1);
         }
     }
 
     const textDecrease = () => {
         if (fontSize > 14) {
             setfontSize(fontSize - 1);
+            localStorage.setItem('fontSize', fontSize - 1);
         }
     }
 

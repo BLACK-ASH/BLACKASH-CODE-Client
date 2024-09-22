@@ -9,7 +9,7 @@ const Playground = () => {
   const [language, setLanguage] = useState("python");
   const [theme, setTheme] = useState(localStorage.getItem('Editortheme') || 'xcode');
   const [fontSize, setfontSize] = useState(parseInt(localStorage.getItem('fontSize')) || 14);
-  const [inputCode, setInputCode] = useState(defaultLanguage[language]); // Default value on init
+  const [inputCode, setInputCode] = useState(localStorage.getItem("PlaygroundCode") || defaultLanguage[language]); // Default value on init
   const [outputCode, setOutputCode] = useState('');
   const [displayOutput, setDisplayOutput] = useState(false);
 
@@ -41,9 +41,16 @@ const Playground = () => {
     setInputCode(defaultLanguage[e]);
   };
 
+  // To Store Code in Local Storage
   useEffect(() => {
-    localStorage.setItem('fontSize', fontSize);
-  }, [fontSize]);
+   const timer = setTimeout(() => {
+      localStorage.setItem("PlaygroundCode", inputCode);
+    }, 500);
+    return () => clearTimeout(timer);
+
+  }, [inputCode]);
+
+
   return (
     <>
       <PlaygroundNavbar

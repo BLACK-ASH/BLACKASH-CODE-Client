@@ -3,9 +3,9 @@ import InputEditor from '../editors/InputEditor';
 import { RiCloseLargeFill } from "react-icons/ri";
 
 const WebBuilder = () => {
-  const [html, sethtml] = useState(localStorage.getItem('html')||"<h1 class='heading' >Hello World!</h1>");
-  const [css, setcss] = useState(localStorage.getItem('css')||'.heading { color: red; }');
-  const [js, setjs] = useState(localStorage.getItem('js')||'document.querySelector(".heading").style.backgroundColor = "blue";');
+  const [html, sethtml] = useState(localStorage.getItem('html') || "<h1 class='heading' >Hello World!</h1>");
+  const [css, setcss] = useState(localStorage.getItem('css') || '.heading { color: red; }');
+  const [js, setjs] = useState(localStorage.getItem('js') || 'document.querySelector(".heading").style.backgroundColor = "blue";');
   const [srcCode, setSrcCode] = useState('');
   const [theme, setTheme] = useState(localStorage.getItem('Editortheme') || 'xcode');
   const [fontSize, setfontSize] = useState(parseInt(localStorage.getItem('fontSize')) || 14);
@@ -16,7 +16,7 @@ const WebBuilder = () => {
 
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setSrcCode(`
         <!DOCTYPE html>
         <html lang="en">
@@ -33,46 +33,49 @@ const WebBuilder = () => {
         </body>
         </html>
         `);
-        localStorage.setItem('html', html);
-        localStorage.setItem('css', css);
-        localStorage.setItem('js', js);
+      localStorage.setItem('html', html);
+      localStorage.setItem('css', css);
+      localStorage.setItem('js', js);
     }, 500);
+    return () => clearTimeout(timer);
 
   }, [html, css, js]);
 
   return (
     <div className='w-full min-h-screen' >
-      <nav className='navbar bg-base-100' >
-        <div className='navbar-start'>
-          <h2 className='text-2xl font-bold text-secondary' >Web Builder</h2>
-        </div>
-        <div className='navbar-end'>
-          <button onClick={() => setDisplayOutput(true)} className='btn btn-neutral font-mono font-bold'>Preview</button>
-        </div>
-      </nav>
-      <div className='w-fit' >
-        <ul className='menu menu-horizontal px-2 space-x-4 '>
-          <li className='text-primary ' onClick={() => {
-            setDisplatHTML(true);
-            setDisplayCSS(false);
-            setDisplayJS(false);
-          }} >index.html</li>
-          <li className='text-primary' onClick={()=>{
-            setDisplatHTML(false);
-            setDisplayCSS(true);
-            setDisplayJS(false);
-          }} >style.css</li>
-          <li className='text-primary' onClick={()=>{
-            setDisplatHTML(false);
-            setDisplayCSS(false);
-            setDisplayJS(true);
-          }}>script.js</li>
-        </ul>
-      </div>
 
-      <div className="flex bg-neutral-content p-2 text-primary min-h-[calc(90vh-41px)]">
+
+      <div className="flex bg-neutral-content p-2 text-primary min-h-[calc(85vh-41px)]">
+
         {/* InputEditor Section - Always visible on large devices */}
         <div className={`flex-1 transition-all duration-300 ${displayOutput ? 'hidden lg:block' : 'block'}`}>
+          <nav className='navbar bg-base-100' >
+            <div className='navbar-start'>
+              <h2 className='text-2xl font-bold text-secondary' >Web Builder</h2>
+            </div>
+            <div className='navbar-end'>
+              <button onClick={() => setDisplayOutput(true)} className='btn btn-neutral font-mono font-bold'>Preview</button>
+            </div>
+          </nav>
+          <div className='w-fit' >
+            <ul className='menu menu-horizontal px-2 space-x-4 '>
+              <li className='text-primary ' onClick={() => {
+                setDisplatHTML(true);
+                setDisplayCSS(false);
+                setDisplayJS(false);
+              }} >index.html</li>
+              <li className='text-primary' onClick={() => {
+                setDisplatHTML(false);
+                setDisplayCSS(true);
+                setDisplayJS(false);
+              }} >style.css</li>
+              <li className='text-primary' onClick={() => {
+                setDisplatHTML(false);
+                setDisplayCSS(false);
+                setDisplayJS(true);
+              }}>script.js</li>
+            </ul>
+          </div>
           <div className={`h-full w-full ${displatHTML ? 'block' : 'hidden'}`}>
             <InputEditor
               defaultValue={html}
@@ -103,13 +106,13 @@ const WebBuilder = () => {
         </div>
 
         {/* Output Section - Toggles visibility but InputEditor stays visible on large devices */}
-        <div className={`flex-1 bg-white transition-all overflow-auto  duration-300 ${displayOutput ? 'block lg:w-[35%]' : 'hidden lg:w-[35%]'}`}>
+        <div className={`flex-1 bg-white h-[85vh]  transition-all overflow-auto  duration-300 ${displayOutput ? 'block lg:w-[35%]' : 'hidden lg:w-[35%]'}`}>
           <div className='w-full h-full ' >
             <div className="flex glass justify-between items-center bg-inherit navbar sticky z-10 top-0 text-white  font-mono ">
               <h1 className='text-3xl font-bold text-primary' >Preview</h1>
-              <button className='btn btn-neutral ' onClick={() => setDisplayOutput(false)} > <RiCloseLargeFill /></button>
+              <button className='btn btn-ghost invert ' onClick={() => setDisplayOutput(false)} > <RiCloseLargeFill /></button>
             </div>
-            <iframe  srcDoc={srcCode} width="100%" height="100%" ></iframe>
+            <iframe srcDoc={srcCode} width="100%" height="100%" ></iframe>
           </div>
         </div>
       </div>
